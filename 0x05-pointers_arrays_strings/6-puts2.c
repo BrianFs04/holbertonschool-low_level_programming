@@ -5,13 +5,15 @@
  */
 void puts2(char *str)
 {
-	int len;
-	char b;
+        int len = 0, c;
 
-	for (len = 0; str[len] != '\0'; len += 2)
+	while (str[len] != '\0')
 	{
-		b = str[len];
-		_putchar(b);
+		len++;
+	}
+	for (c = 0; c < len; c += 2)
+	{
+		_putchar(str[c]);
 	}
 	_putchar('\n');
 }
