@@ -20,9 +20,9 @@ char *cap_string(char *c)
 			{
 				c[i + 1] -= 32;
 			}
-			else if (c[i] == 0)
+			else if (i == 0)
 			{
-				if(c[i] >= 97 && c[i] <= 122)
+				if (c[i] >= 97 && c[i] <= 122)
 				{
 					c[i] -= 32;
 				}
