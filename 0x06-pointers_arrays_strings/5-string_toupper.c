@@ -2,6 +2,7 @@
 /**
  * string_toupper - reverses the content of an array of integers
  * @c: Pointer to a char
+ * Return: uppercase letters
  */
 char *string_toupper(char *c)
 {
@@ -15,5 +16,5 @@ char *string_toupper(char *c)
 		}
 		i++;
 	}
-	return(c);
+	return (c);
 }
