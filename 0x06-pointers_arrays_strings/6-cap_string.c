@@ -14,11 +14,18 @@ char *cap_string(char *c)
 	while (c[i] != '\0')
 	{
 		n = 0;
-		while (req[n + 1] != '\0')
+		while (req[n] != '\0')
 		{
 			if (c[i] == req[n] && c[i + 1] >= 97 && c[i + 1] <= 122)
 			{
 				c[i + 1] -= 32;
+			}
+			else if (c[i] == 0)
+			{
+				if(c[i] >= 97 && c[i] <= 122)
+				{
+					c[i] -= 32;
+				}
 			}
 			n++;
 		}
