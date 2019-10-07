@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * print_diagsums - the sum of the two diagonals of a square matrix of integers
  * @a: Pointer to a integer
