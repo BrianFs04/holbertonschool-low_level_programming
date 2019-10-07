@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _strchr - fills memory with a constant byte
+ * _strchr - locates a character in a string
  * @s: Pointer to a string
  * @c: Certain characters of the string
  * Return: Pointer elements
