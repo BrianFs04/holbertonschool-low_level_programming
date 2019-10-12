@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	{
 		while (change > 0)
 		{
-		        canti += change / cents[a];
+			canti += change / cents[a];
 			change = change % cents[a];
 			if (change % cents[a] != 0)
 			{
