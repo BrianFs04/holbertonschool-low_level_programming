@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	int i = 1, sum = 0, iti = 1;
 
-	if (argc > 0)
+	if (argc > 1)
 	{
 		for (; i < argc; i++)
 		{
