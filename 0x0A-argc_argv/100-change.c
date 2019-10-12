@@ -10,28 +10,22 @@
 int main(int argc, char *argv[])
 {
 	int cents[] = {25, 10, 5, 2, 1};
-	int i = 1;
 	int a = 0;
-	int mini;
-	int change = atoi(argv[i]);
+	int canti = 0;
+	int change = atoi(argv[argc - 1]);
 
 	if (argc == 2)
 	{
-		if (change < 0)
-		{
-			printf("0\n");
-			return (0);
-		}
 		while (change > 0)
 		{
-		        mini += change / cents[a];
+		        canti += change / cents[a];
 			change = change % cents[a];
-			if (change != 0)
+			if (change % cents[a] != 0)
 			{
 				a++;
 			}
 		}
-		printf("%d\n", mini);
+		printf("%d\n", canti);
 	}
 	else
 	{
