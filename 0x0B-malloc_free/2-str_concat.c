@@ -52,12 +52,12 @@ char *str_concat(char *s1, char *s2)
 {
 	char *a;
 
-	if (!s1 || !s2)
-	{
-		return ("");
-	}
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 	a = malloc((_strlen(s1) + _strlen(s2) * 1) + 1);
-	if (!a)
+	if (a == '\0')
 	{
 		return (NULL);
 	}
