@@ -50,11 +50,11 @@ char *_strcat(char *dest, char *src)
 
 char *str_concat(char *s1, char *s2)
 {
-	char *a = NULL;
+	char *a;
 
 	if (!s1 || !s2)
 	{
-		return (NULL);
+		return ("");
 	}
 	a = malloc((_strlen(s1) + _strlen(s2) * 1) + 1);
 	if (!a)
