@@ -55,7 +55,7 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	a = malloc(_strlen(str) * sizeof(char));
+	a = malloc(_strlen(str) * sizeof(*a) + 1);
 	if (a == '\0')
 	{
 		return (NULL);
