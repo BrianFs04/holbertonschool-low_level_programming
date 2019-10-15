@@ -52,16 +52,16 @@ char *str_concat(char *s1, char *s2)
 {
 	char *a;
 
-	if (s1 == "" || s2 == "")
+	if (!s1 || !s2)
 	{
 		return (NULL);
 	}
 	a = malloc((_strlen(s1) + _strlen(s2) * 1) + 1);
-	if (a == "")
+	if (!a)
 	{
 		return (NULL);
 	}
 	_strcat(a, s1);
 	_strcat(a, s2);
-	return(a);
+	return (a);
 }
