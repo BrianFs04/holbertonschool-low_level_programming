@@ -50,7 +50,7 @@ char *_strcat(char *dest, char *src)
 
 char *str_concat(char *s1, char *s2)
 {
-	char *a;
+	char *a = NULL;
 
 	if (!s1 || !s2)
 	{
