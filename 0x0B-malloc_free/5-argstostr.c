@@ -30,7 +30,7 @@ char *_strcat(char *dest, char *src)
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j;
+	int i, j, con;
 	char *a, *jump;
 
 	if (ac == 0 || av == NULL)
@@ -39,12 +39,16 @@ char *argstostr(int ac, char **av)
 	}
 	else
 	{
+		con = 0;
 		for (i = 0; i < ac; i++)
 		{
 			for (j = 0; av[i][j] != '\0'; j++)
-				;
+			{
+				con++;
+			}
+			con++;
 		}
-		a = malloc(i * sizeof(char) + 1);
+		a = malloc(con * sizeof(char) + 1);
 		jump = "\n";
 
 		for (i = 0; i < ac; i++)
