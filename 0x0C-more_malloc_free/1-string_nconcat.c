@@ -19,51 +19,6 @@ int _strlen(char *s)
 	}
 	return (len);
 }
-/**
- * _strncat - concatenates two strings
- * @dest: Array of destiny
- * @src: It's where we storage the dest in
- * @n: Position to print
- * Return: A pointer to the resulting string dest
- */
-
-char *_strncat(char *dest, char *src, int n)
-{
-	int a = 0, b = 0;
-
-	while (dest[a] != '\0')
-	{
-		a++;
-	}
-	while (b < n && src[b] != '\0')
-	{
-		dest[a + b] = src[b];
-		b++;
-	}
-	return (dest);
-}
-
-/**
- * _strcat - concatenates
- * two strings
- * @dest: Hello
- * @src: World!
- * Return: A pointer to the resulting string dest
- */
-
-char *_strcat(char *dest, char *src)
-{
-	int i = 0, n = 0;
-
-	while (dest[i] != '\0')
-		i++;
-	while (src[n] != '\0')
-	{
-		dest[i++] = src[n];
-		n++;
-	}
-	return (dest);
-}
 
 /**
  * string_nconcat - concatenates two string
@@ -76,21 +31,26 @@ char *_strcat(char *dest, char *src)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *a;
-	unsigned int lon;
+	unsigned int i, j;
 
-	a = malloc((_strlen(s1) + _strlen(s2)) + 1);
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+
+	a = malloc(sizeof(char) * (_strlen(s1) + n + 1));
 
 	if (a == NULL)
 	{
 		return (NULL);
 	}
-
-	lon = _strlen(s2);
-	_strcat(a, s1);
-
-	if (n >= lon)
+	for (i = 0; s1[i] != '\0'; i++)
+		a[i] = s1[i];
+	for (j = 0; j < n && s2[j] != '\0'; j++)
 	{
-		_strncat(a, s2, n);
+		a[i] = s2[j];
+		i++;
 	}
+	a[i] = '\0';
 	return (a);
 }
