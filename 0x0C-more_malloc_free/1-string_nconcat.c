@@ -76,7 +76,7 @@ char *_strcat(char *dest, char *src)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *a;
-	unsigned int lon = _strlen(s2);
+	unsigned int lon;
 
 	a = malloc((_strlen(s1) + _strlen(s2)) + 1);
 
@@ -84,6 +84,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		return (NULL);
 	}
+
+	lon = _strlen(s2);
 	_strcat(a, s1);
 
 	if (lon >= n)
