@@ -17,15 +17,14 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	i = 0;
 	a = malloc(nmemb * size);
 
-	if (a == NULL)
-		return (NULL);
-
 	if (nmemb == 0 || size == 0)
 	{
 		return (NULL);
 	}
-	while (i < nmemb * size)
+	while (i < size * nmemb)
 	{
+		if (a == NULL)
+			return (NULL);
 		a[i] = 0;
 		i++;
 	}
