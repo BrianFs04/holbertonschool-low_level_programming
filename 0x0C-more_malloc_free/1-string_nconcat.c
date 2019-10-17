@@ -88,7 +88,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	lon = _strlen(s2);
 	_strcat(a, s1);
 
-	if (lon >= n)
+	if (n >= lon)
 	{
 		_strncat(a, s2, n);
 	}
