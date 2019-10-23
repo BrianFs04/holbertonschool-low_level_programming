@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "3-calc.h"
 /**
  * main - calculator
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	if (*argv[2] != 43 && *argv[2] != 45 && *argv[2] != 42
-	    && *argv[2] != 47 && *argv[2] != 37)
+	    && *argv[2] != 47 && *argv[2] != 37 || strlen(argv[2]) != 1)
 	{
 		printf("Error\n");
 		exit(99);
