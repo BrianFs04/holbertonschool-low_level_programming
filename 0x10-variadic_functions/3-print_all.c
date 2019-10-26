@@ -52,6 +52,7 @@ void print_string(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list valist;
+	char *sep = "";
 	int i, j;
 	dataTypes type[] = {
 		{'c', print_char},
@@ -69,9 +70,9 @@ void print_all(const char * const format, ...)
 		{
 			if (format[i] == type[j].a)
 			{
+				printf("%s", sep);
 				type[j].f(valist);
-				if (i < format[i + 1])
-					printf(", ");
+				sep = ", ";
 			}
 			j++;
 		}
