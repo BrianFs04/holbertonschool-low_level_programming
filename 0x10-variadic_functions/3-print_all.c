@@ -72,8 +72,6 @@ void print_all(const char * const format, ...)
 				type[j].f(valist);
 				if (i < format[i + 1])
 					printf(", ");
-				i++;
-				break;
 			}
 			j++;
 		}
