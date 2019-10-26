@@ -12,7 +12,7 @@ void print_all(const char * const format, ...);
 
 /**
  * struct data - structure
- *
+ * @a: operator
  * @f: pointer function
  */
 typedef struct data
