@@ -52,7 +52,7 @@ void print_string(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list valist;
-	int i, j, count;
+	int i, j;
 	dataTypes type[] = {
 		{'c', print_char},
 		{'i', print_int},
@@ -61,7 +61,6 @@ void print_all(const char * const format, ...)
 	};
 
 	i = 0;
-	count = 0;
 	va_start(valist, format);
 	while (format[i] != '\0')
 	{
@@ -72,8 +71,8 @@ void print_all(const char * const format, ...)
 			{
 				type[j].f(valist);
 				if (i < format[i + 1])
-				printf(", ");
-				count++;
+					printf(", ");
+				i++;
 				break;
 			}
 			j++;
