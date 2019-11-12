@@ -7,8 +7,9 @@
  */
 int copy_file(char *file_from, char *file_to)
 {
-	int fd1, fd2, rd1, wr2;
-	char buff[1024];
+	int fd1, fd2, wr2;
+	unsigned long int rd1;
+	char *buff = malloc(1024);
 
 	fd1 = open(file_from, O_RDONLY);
 
@@ -19,7 +20,7 @@ int copy_file(char *file_from, char *file_to)
 	}
 
 
-	rd1 = read(fd1, buff, 1024);
+	rd1 = read(fd1, buff, sizeof(buff));
 
 	fd2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
@@ -29,7 +30,8 @@ int copy_file(char *file_from, char *file_to)
 		exit(99);
 	}
 
-	wr2 = write(fd2, buff, rd1);
+	while (rd1 != 0)
+		wr2 = write(fd2, buff, rd1);
 
 	if (close(fd1) == -1)
 	{
@@ -41,7 +43,7 @@ int copy_file(char *file_from, char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
-
+	free(buff);
 	return (wr2);
 }
 /**
@@ -54,7 +56,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp %s %s\n", argv[1], argv[2]);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
 
