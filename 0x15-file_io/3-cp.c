@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-
 /**
  * copy_file - function that copies the content of a file to another
  * @file_from: Received file
@@ -25,7 +24,6 @@ int copy_file(char *file_from, char *file_to)
 		exit(98);
 	}
 
-
 	fd2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 
 	if (fd2 == -1)
@@ -35,8 +33,14 @@ int copy_file(char *file_from, char *file_to)
 	}
 
 	buff = malloc(1024);
-	while((rd1 = read(fd1, buff, 1024)) != 0)
-		write(fd2, buff, rd1);
+	while ((rd1 = read(fd1, buff, 1024)) > 0)
+	{
+		if (write(fd2, buff, rd1))
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+			exit(98);
+		}
+	}
 
 	if (close(fd1) == -1)
 	{
@@ -48,7 +52,6 @@ int copy_file(char *file_from, char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
-
 	return (0);
 }
 /**
