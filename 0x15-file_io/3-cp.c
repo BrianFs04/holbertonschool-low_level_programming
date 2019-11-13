@@ -1,4 +1,3 @@
-#include "holberton.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -42,12 +41,6 @@ int copy_file(char *file_from, char *file_to)
 		}
 	}
 
-	if (rd1 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		exit(98);
-	}
-
 	if (close(fd1) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
@@ -73,7 +66,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
-
 	copy_file(argv[1], argv[2]);
 	return (0);
 }
