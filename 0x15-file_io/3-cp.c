@@ -35,7 +35,7 @@ int copy_file(char *file_from, char *file_to)
 	buff = malloc(1024);
 	while ((rd1 = read(fd1, buff, 1024)) > 0)
 	{
-		if (write(fd2, buff, rd1))
+		if ((write(fd2, buff, rd1)) != rd1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 			exit(98);
