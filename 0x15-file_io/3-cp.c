@@ -1,4 +1,11 @@
 #include "holberton.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
 /**
  * copy_file - function that copies the content of a file to another
  * @file_from: Received file
@@ -7,9 +14,8 @@
  */
 int copy_file(char *file_from, char *file_to)
 {
-	int fd1, fd2, wr2;
-	unsigned long int rd1;
-	char *buff = malloc(1024);
+	int fd1, fd2, rd1;
+	char *buff;
 
 	fd1 = open(file_from, O_RDONLY);
 
@@ -20,9 +26,7 @@ int copy_file(char *file_from, char *file_to)
 	}
 
 
-	rd1 = read(fd1, buff, sizeof(buff));
-
-	fd2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 
 	if (fd2 == -1)
 	{
@@ -30,8 +34,9 @@ int copy_file(char *file_from, char *file_to)
 		exit(99);
 	}
 
-	while (rd1 != 0)
-		wr2 = write(fd2, buff, rd1);
+	buff = malloc(1024);
+	while((rd1 = read(fd1, buff, 1024)) != 0)
+		write(fd2, buff, rd1);
 
 	if (close(fd1) == -1)
 	{
@@ -43,8 +48,8 @@ int copy_file(char *file_from, char *file_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
-	free(buff);
-	return (wr2);
+
+	return (0);
 }
 /**
  * main - main function
