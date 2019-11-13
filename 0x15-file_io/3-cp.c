@@ -10,7 +10,7 @@
  * @file_to: File in which it's saved the copy
  * Return: The copy
  */
-int copy_file(char *file_from, char *file_to)
+int copy_file(char *file_from, char *file_to, char *argv[])
 {
 	int fd1, fd2, rd1;
 	char *buff;
@@ -19,7 +19,7 @@ int copy_file(char *file_from, char *file_to)
 
 	if (fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 
@@ -27,7 +27,7 @@ int copy_file(char *file_from, char *file_to)
 
 	if (fd2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 
@@ -36,7 +36,7 @@ int copy_file(char *file_from, char *file_to)
 	{
 		if ((write(fd2, buff, rd1)) != rd1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
 	}
@@ -66,6 +66,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
-	copy_file(argv[1], argv[2]);
+	copy_file(argv[1], argv[2], argv);
 	return (0);
 }
