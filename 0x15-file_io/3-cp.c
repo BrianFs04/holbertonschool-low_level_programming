@@ -8,6 +8,7 @@
  * copy_file - function that copies the content of a file to another
  * @file_from: Received file
  * @file_to: File in which it's saved the copy
+ * @argv: argument vector
  * Return: The copy
  */
 int copy_file(char *file_from, char *file_to, char *argv[])
