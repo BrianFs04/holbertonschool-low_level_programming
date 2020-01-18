@@ -14,7 +14,7 @@ unsigned int h_index(const char *key, unsigned int size)
 	{
 		h_index += key[i] % size;
 		i++;
- 	}
+	}
 	return (h_index);
 }
 
@@ -33,7 +33,7 @@ void h_handler(hash_table_t *ht, hash_node_t *new_node)
 		tmp = ht->array[i];
 		while (tmp != NULL)
 		{
-			if(strcmp(tmp->key, new_node->key) == 1)
+			if (strcmp(tmp->key, new_node->key) == 1)
 				tmp = tmp->next;
 		}
 		if (tmp == NULL)
