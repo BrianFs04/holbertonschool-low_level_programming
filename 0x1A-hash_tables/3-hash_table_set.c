@@ -1,5 +1,4 @@
 #include "hash_tables.h"
-
 /**
  * h_handler - collision handler
  * @ht: hash tables
@@ -59,5 +58,5 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	h_handler(ht, new_node);
 
-	return (0);
+	return (1);
 }
