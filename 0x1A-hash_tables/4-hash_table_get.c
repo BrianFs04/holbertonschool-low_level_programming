@@ -8,7 +8,7 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	char *key_value = strdup(key);
+	char *key_dupl = strdup(key);
 	unsigned int i = key_index((unsigned char *)key, ht->size);
 	hash_node_t *tmp = ht->array[i];
 
@@ -17,12 +17,12 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	while (tmp != NULL)
 	{
-		if (strcmp(tmp->key, key_value) == 1)
-			tmp = tmp->next;
-		break;
+		if (strcmp(tmp->key, key_dupl) == 0)
+			break;
+		tmp = tmp->next;
 	}
 
-	free(key_value);
+	free(key_dupl);
 
 	if (tmp == NULL)
 		return (NULL);
