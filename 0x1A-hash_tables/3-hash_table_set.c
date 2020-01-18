@@ -8,9 +8,9 @@
 void h_handler(hash_table_t *ht, hash_node_t *new_node)
 {
 	unsigned int i = key_index((unsigned char *)new_node->key, ht->size);
-	hash_node_t *tmp = ht->array[i];
+	hash_node_t *tmp;
 
-	if (tmp != NULL)
+	if (ht->array[i] != NULL)
 	{
 		tmp = ht->array[i];
 		while (tmp != NULL)
